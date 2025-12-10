@@ -1,19 +1,28 @@
-import { RiArrowRightLine, RiMailLine } from "react-icons/ri";
+import { Grid, GridItem } from "@chakra-ui/react";
 import "./App.css";
-import { Button, HStack } from "@chakra-ui/react";
 
 function App() {
   return (
-    <>
-      <HStack>
-        <Button colorPalette="teal" variant="solid">
-          <RiMailLine /> Email
-        </Button>
-        <Button colorPalette="teal" variant="outline">
-          Call us <RiArrowRightLine />
-        </Button>
-      </HStack>
-    </>
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`,
+      }}
+    >
+      <GridItem area="nav" bg="coral">
+        Nav
+      </GridItem>
+      <GridItem
+        area="aside"
+        bg="lightblue"
+        display={{ base: "none", lg: "block" }}
+      >
+        Aside
+      </GridItem>
+      <GridItem area="main" bg="lightgreen">
+        Main
+      </GridItem>
+    </Grid>
   );
 }
 
