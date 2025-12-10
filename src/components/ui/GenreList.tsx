@@ -10,11 +10,14 @@ import {
 } from "@chakra-ui/react";
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
+  onGenreSelected: (genre: Genre) => void;
   selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = ({
+  onGenreSelected: onSelectGenre,
+  selectedGenre,
+}: Props) => {
   const { data, error, isLoading } = useGenres();
   if (error) return null;
   if (isLoading) return <Spinner />;
