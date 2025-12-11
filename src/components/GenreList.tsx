@@ -29,7 +29,7 @@ const GenreList = ({
       </Heading>
       <List.Root listStyleType="none">
         {data.map((genre) => (
-          <ListItem key={genre.id} paddingY="5px">
+          <ListItem key={genre.id} paddingY="4px">
             <HStack>
               <Image
                 boxSize="32px"
