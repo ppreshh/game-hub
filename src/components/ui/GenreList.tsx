@@ -2,6 +2,7 @@ import useGenres, { type Genre } from "@/hooks/useGenres";
 import getCroppedImageUrl from "@/services/image-url";
 import {
   Button,
+  Heading,
   HStack,
   Image,
   List,
@@ -22,27 +23,37 @@ const GenreList = ({
   if (error) return null;
   if (isLoading) return <Spinner />;
   return (
-    <List.Root listStyleType="none">
-      {data.map((genre) => (
-        <ListItem key={genre.id} paddingY="5px">
-          <HStack>
-            <Image
-              boxSize="32px"
-              borderRadius={8}
-              src={getCroppedImageUrl(genre.image_background)}
-            />
-            <Button
-              fontSize="lg"
-              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-              variant="plain"
-              onClick={() => onSelectGenre(genre)}
-            >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List.Root>
+    <>
+      <Heading textAlign="left" size="2xl" marginTop={2} marginBottom={2}>
+        Genres
+      </Heading>
+      <List.Root listStyleType="none">
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY="5px">
+            <HStack>
+              <Image
+                boxSize="32px"
+                borderRadius={8}
+                objectFit="cover"
+                src={getCroppedImageUrl(genre.image_background)}
+              />
+              <Button
+                fontSize="lg"
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                variant="plain"
+                textDecoration={
+                  genre.id === selectedGenre?.id ? "underline" : "none"
+                }
+                textUnderlineOffset="3px"
+                onClick={() => onSelectGenre(genre)}
+              >
+                {genre.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List.Root>
+    </>
   );
 };
 
